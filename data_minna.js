@@ -1207,7 +1207,7 @@ const babData = {
     { kanji: "針", kana: "はり", answers: ["jarum", "benang", "gunting", "paku"], correct: "jarum" },
     { kanji: "指します", kana: "さします", answers: ["menunjuk", "melihat", "memegang", "membuang"], correct: "menunjuk" },
     { kanji: "駅前", kana: "えきまえ", answers: ["depan stasiun", "belakang stasiun", "dalam stasiun", "luar stasiun"], correct: "depan stasiun" },
-    { kanji: "倒れます", kana: "だおれます", answers: ["jatuh", "bangun", "rusak", "hilang"], correct: "jatuh" },
+    { kanji: "倒れます", kana: "たおれます", answers: ["jatuh", "bangun", "rusak", "hilang"], correct: "jatuh" },
     { kanji: "西", kana: "にし", answers: ["barat", "timur", "selatan", "utara"], correct: "barat" },
     { kanji: "～の方", kana: "～のほう", answers: ["sebelah ~", "arah ~", "milik ~", "orang ~"], correct: "sebelah ~" },
     { kanji: "燃えます", kana: "もえます", answers: ["terbakar", "padam", "basah", "rusak"], correct: "terbakar" },
@@ -1750,3 +1750,4 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
