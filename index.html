@@ -10,7 +10,6 @@
   #app { width: 100vw; max-width: 420px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
   
   #backBtn { position: absolute; top: 15px; left: 15px; font-size: 28px; background: none; border: none; color: #ff5722; cursor: pointer; display: none; z-index: 1000; padding: 5px; line-height: 1; }
-  /* Tambahan Style Tombol Mute */
   #muteBtn { position: absolute; top: 15px; right: 15px; font-size: 24px; background: none; border: none; color: #ffb74d; cursor: pointer; z-index: 1000; padding: 5px; line-height: 1; }
   
   #quizHeader { text-align: center; margin-bottom: 15px; }
@@ -94,7 +93,7 @@
     <div id="kanji"></div>
     <div id="kanaWrap">
         <div id="kana"></div>
-        <button class="speakerBtn" onclick="playAudio()">🔊</button>
+        <button id="mainSpeaker" class="speakerBtn" onclick="playAudio()">🔊</button>
     </div>
   </div>
 
@@ -134,7 +133,7 @@
   let quizMode = 'jp-id';
   let currentAnswer = ""; 
   let wrongList = [];
-  let isMuted = false; // Status mute
+  let isMuted = false;
 
   function hideAll() {
     ['mainMenu','minnaMenu','irodoriMenu','dynamicMenu','modeMenu','wordBox','options','comboSection','resultPage','inputContainer']
@@ -194,16 +193,15 @@
     renderQuestion();
   }
 
-  // Fungsi Audio (Dengan Logika Mute)
   function playAudio() {
     if (isMuted) return;
     const q = currentQuestions[currentIndex];
     if (!q) return;
     
-    // Suara diambil dari kana/kanji (Bahasa Jepang)
-    let textToSpeak = (quizMode === 'jp-id') ? (q.kana || q.kanji) : q.kana;
+    // Suara tetap selalu bahasa Jepang (diambil dari kana/kanji)
+    let textToSpeak = q.kana || q.kanji;
     
-    window.speechSynthesis.cancel(); // Hentikan suara sebelumnya
+    window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
     utterance.lang = 'ja-JP';
     utterance.rate = 0.8;
@@ -219,6 +217,7 @@
     const optBox = document.getElementById('options');
     const inputCont = document.getElementById('inputContainer');
     const inputField = document.getElementById('userAnswer');
+    const speaker = document.getElementById('mainSpeaker');
     
     document.getElementById('wordBox').style.display = 'flex';
     document.getElementById('comboSection').style.display = 'block';
@@ -231,21 +230,20 @@
 
     let choices = [];
     if (quizMode === 'jp-id') {
+        speaker.style.display = 'block'; // Tampilkan speaker di mode JP-ID
         document.getElementById('kanji').innerText = q.kanji || "";
         document.getElementById('kana').innerText = q.kana || "";
         currentAnswer = q.correct;
         choices = [...q.answers];
-        // Mode JP-ID: Suara bunyi di awal
         setTimeout(playAudio, 300);
     } else {
-        // Mode ID-JP: Tampilkan Arti Indo di tempat kana
+        speaker.style.display = 'none'; // Sembunyikan speaker di mode ID-JP
         document.getElementById('kanji').innerText = ""; 
         document.getElementById('kana').innerText = q.correct; 
         currentAnswer = q.kana;
         choices.push(q.kana);
         let others = selectedData.filter(item => item.kana !== q.kana).sort(()=>Math.random()-0.5).slice(0,3);
         others.forEach(o => choices.push(o.kana));
-        // Mode ID-JP: Suara TIDAK bunyi di awal (supaya tidak bocor)
     }
 
     const isTyping = Math.random() > 0.5;
@@ -290,8 +288,7 @@
     if(isCorrect) {
         if(btn) btn.classList.add('correct');
         correctCount++; combo++;
-        // Bunyikan suara HANYA JIKA jawaban benar (Terutama berguna di mode ID-JP)
-        playAudio();
+        playAudio(); // Suara bunyi setelah jawaban benar
     } else {
         if(btn) btn.classList.add('wrong');
         wrongList.push(q); combo = 0;
