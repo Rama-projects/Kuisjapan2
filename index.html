@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>KUIS JEPANG RAMA - PRO MUTE</title>
+<title>KUIS JEPANG RAMA - PRO</title>
 <style>
   html, body { margin: 0; padding: 0; background-color: #121212; color: #eee; font-family: sans-serif; }
   body { display: flex; justify-content: center; min-height: 100vh; }
   #app { width: 100vw; max-width: 420px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; position: relative; }
   
-  /* Tombol Back & Mute di Header */
   #backBtn { position: absolute; top: 15px; left: 15px; font-size: 28px; background: none; border: none; color: #ff5722; cursor: pointer; display: none; z-index: 1000; }
-  #muteBtn { position: absolute; top: 15px; right: 15px; font-size: 24px; background: #222; border: 1px solid #444; color: #ffb74d; cursor: pointer; padding: 8px; border-radius: 50%; width: 45px; height: 45px; display: none; z-index: 1000; align-items: center; justify-content: center; transition: 0.2s; }
-  #muteBtn:active { transform: scale(0.9); }
+  
+  /* Tombol Mute Baru - Letak di Pojok Kanan Atas */
+  #muteToggle { position: absolute; top: 15px; right: 15px; font-size: 24px; background: #222; border: 1px solid #444; color: #ffb74d; cursor: pointer; padding: 5px; border-radius: 50%; width: 45px; height: 45px; display: none; z-index: 1000; align-items: center; justify-content: center; }
 
   .menu-container { display: none; flex-direction: column; gap: 15px; align-items: center; width: 100%; padding-top: 50px; }
   #headerGrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
@@ -22,14 +22,11 @@
   .iroBtn { background: #2196f3; box-shadow: 0 4px 0 #1565c0; }
   .babBtn { background: #1e1e1e; border-radius: 12px; padding: 10px; color: #eee; border: 1px solid #333; cursor: pointer; min-width: 85px; font-size: 13px; }
 
-  /* Kotak Kata */
   #wordBox { display: none; flex-direction: column; align-items: center; text-align: center; flex-grow: 1; justify-content: center; }
   #kanji { font-size: 22px; color: #888; margin-bottom: 5px; min-height: 26px; }
   #kanaWrap { display: flex; align-items: center; gap: 15px; }
   #kana { font-size: 34px; color: #ff5722; font-weight: bold; }
-  
-  /* Speaker di Tengah */
-  .speakerBtn { background: linear-gradient(145deg, #1e1e1e, #252525); border: 2px solid #ffb74d; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 26px; color: #ffb74d; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+  .speakerBtn { background: none; border: none; font-size: 30px; cursor: pointer; color: #ffb74d; }
 
   #options { display: none; flex-direction: column; gap: 12px; width: 100%; margin: 20px 0; }
   .optBtn { background: #252525; border: 1px solid #333; padding: 18px; border-radius: 15px; color: white; font-size: 18px; cursor: pointer; }
@@ -42,7 +39,7 @@
 
   #resultPage { display: none; text-align: center; width: 100%; }
   .score-circle { width: 120px; height: 120px; border-radius: 50%; border: 6px solid #ff5722; display: flex; justify-content: center; align-items: center; margin: 20px auto; font-size: 32px; font-weight: bold; color: #ff5722;}
-  #reviewBox { width: 100%; text-align: left; background: #1a1a1a; padding: 15px; border-radius: 12px; box-sizing: border-box; margin-bottom: 20px; max-height: 250px; overflow-y: auto; }
+  #reviewBox { width: 100%; text-align: left; background: #1a1a1a; padding: 15px; border-radius: 12px; box-sizing: border-box; margin-bottom: 20px; max-height: 300px; overflow-y: auto; }
   .review-item { border-bottom: 1px solid #333; padding: 10px 0; font-size: 14px; }
 </style>
 </head>
@@ -50,7 +47,7 @@
 
 <div id="app">
   <button id="backBtn" onclick="goBack()">←</button>
-  <button id="muteBtn" onclick="toggleMute()">🔊</button>
+  <button id="muteToggle" onclick="toggleMute()">🔊</button>
 
   <div id="mainMenu" class="menu-container">
     <h2 style="color: #ff5722;">日本語クイズ</h2>
@@ -62,6 +59,11 @@
     <button class="mainBtn" onclick="showBagian(1)">BAGIAN 1 (1-25)</button>
     <button class="mainBtn" onclick="showBagian(2)">BAGIAN 2 (26-50)</button>
     <button class="mainBtn" style="background:#333; border:2px solid #ff5722;" onclick="showRefMenu()">REFERENSI</button>
+  </div>
+
+  <div id="irodoriMenu" class="menu-container">
+    <h2 style="color:#2196f3;">IRODORI</h2>
+    <button class="mainBtn iroBtn" onclick="startIrodoriKanji()">KANJI</button>
   </div>
 
   <div id="dynamicMenu" class="menu-container">
@@ -113,17 +115,18 @@
   let correctCount = 0, combo = 0, quizMode = 'jp-id', currentAnswer = "";
   let wrongList = [], activeView = 'main', currentLabel = '', selectedData = null;
   
-  // Status Mute
+  // Status Mute Global
   let isMuted = false;
 
   function hideAll() {
-    ['mainMenu','minnaMenu','dynamicMenu','modeMenu','wordBox','options','comboSection','resultPage','inputContainer']
+    ['mainMenu','minnaMenu','irodoriMenu','dynamicMenu','modeMenu','wordBox','options','comboSection','resultPage','inputContainer']
     .forEach(id => document.getElementById(id).style.display = 'none');
-    document.getElementById('muteBtn').style.display = 'none';
+    document.getElementById('muteToggle').style.display = 'none'; // Sembunyikan mute saat ganti menu
   }
 
   function showMainMenu() { hideAll(); document.getElementById('mainMenu').style.display = 'flex'; document.getElementById('backBtn').style.display = 'none'; activeView = 'main'; }
   function showMinnaMenu() { hideAll(); document.getElementById('minnaMenu').style.display = 'flex'; document.getElementById('backBtn').style.display = 'block'; activeView = 'minna'; }
+  function showIrodoriMenu() { hideAll(); document.getElementById('irodoriMenu').style.display = 'flex'; document.getElementById('backBtn').style.display = 'block'; activeView = 'irodori'; }
 
   function showGridMenu(title, type, start, end) {
     hideAll();
@@ -143,8 +146,9 @@
 
   function showBagian(n) { showGridMenu("Minna No Nihongo", 'bagian_'+n, n===1?1:26, n===1?25:50); }
   function showRefMenu() { showGridMenu("Referensi", "ref", 1, 50); }
-  function showModeMenu() { hideAll(); document.getElementById('modeMenu').style.display = 'flex'; document.getElementById('modeInfo').innerText = currentLabel; activeView = 'mode'; document.getElementById('backBtn').style.display = 'block'; }
+  function showModeMenu() { hideAll(); document.getElementById('modeMenu').style.display = 'flex'; document.getElementById('modeInfo').innerText = currentLabel; activeView = 'mode'; }
   function setQuizMode(mode) { quizMode = mode; startQuiz(); }
+  function startIrodoriKanji() { selectedData = irodoriKanjiData; currentLabel = "Irodori Kanji"; showModeMenu(); }
 
   function startQuiz() {
     masterPool = [...selectedData].sort(() => Math.random() - 0.5);
@@ -158,19 +162,19 @@
     renderQuestion();
   }
 
-  // Fungsi Mute
+  // Fungsi Toggle Mute
   function toggleMute() {
     isMuted = !isMuted;
-    const btn = document.getElementById('muteBtn');
+    const btn = document.getElementById('muteToggle');
     btn.innerText = isMuted ? "🔇" : "🔊";
-    if (isMuted) window.speechSynthesis.cancel(); // Matikan suara yang sedang berjalan
+    if (isMuted) window.speechSynthesis.cancel();
   }
 
   function playAudio() {
-    if (isMuted) return; // Jika mute, tidak bunyi
+    if (isMuted) return; // Tidak bunyi jika muted
     const q = currentQuestions[currentIndex];
     if (!q) return;
-    window.speechSynthesis.cancel(); // Stop suara sebelumnya agar tidak tumpang tindih
+    window.speechSynthesis.cancel(); // Bersihkan antrean suara
     const utterance = new SpeechSynthesisUtterance(q.kana || q.kanji);
     utterance.lang = 'ja-JP'; utterance.rate = 0.7;
     window.speechSynthesis.speak(utterance);
@@ -188,7 +192,7 @@
     
     document.getElementById('wordBox').style.display = 'flex';
     document.getElementById('comboSection').style.display = 'block';
-    document.getElementById('muteBtn').style.display = 'flex';
+    document.getElementById('muteToggle').style.display = 'flex'; // Tampilkan mute saat kuis
     document.getElementById('backBtn').style.display = 'block';
     document.getElementById('instruksi').innerText = q.instruksi || "Pilih/Ketik jawaban";
     document.getElementById('wrongMsg').style.display = "none";
@@ -204,6 +208,7 @@
         document.getElementById('kanji').innerText = ""; 
         document.getElementById('kana').innerText = q.correct; 
         currentAnswer = q.kana;
+        // JANGAN playAudio di sini agar tidak bocor jawabannya
     }
 
     const isTyping = Math.random() > 0.5;
@@ -237,7 +242,7 @@
         inputField.style.borderColor = "#f44336";
         msg.style.display = 'block';
         msg.innerText = (quizMode==='jp-id') ? `SALAH!\nJawaban: ${q.correct}` : `SALAH!\nJawaban: ${q.kanji || ''} (${q.kana})`;
-        if(quizMode==='id-jp') playAudio();
+        if(quizMode==='id-jp') playAudio(); // Bunyikan jawaban yang benar
         setTimeout(() => processAnswer(false), 6000); 
     }
   }
@@ -269,7 +274,7 @@
     
     const rBox = document.getElementById('reviewBox');
     rBox.innerHTML = '<b>REVIEW KESALAHAN:</b><br><br>';
-    if(wrongList.length === 0) rBox.innerHTML += '<span style="color:#4caf50">Sempurna!</span>';
+    if(wrongList.length === 0) rBox.innerHTML += '<span style="color:#4caf50">Sempurna! Kamu hebat!</span>';
     else wrongList.forEach(w => { rBox.innerHTML += `<div class="review-item"><b>${w.kanji || ''} ${w.kana}</b><br>${w.correct}</div>`; });
 
     const btnLanjut = document.getElementById('nextChunkBtn');
