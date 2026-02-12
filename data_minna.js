@@ -1178,8 +1178,8 @@ const babData = {
     { kanji: "拭きます", kana: "ふきます", answers: ["mengelap", "mencuci", "membuang", "menulis"], correct: "mengelap" },
     { kanji: "取り替えます", kana: "とりかえます", answers: ["mengganti", "membuang", "memperbaiki", "mengambil"], correct: "mengganti" },
     { kanji: "片づけます", kana: "かたづけます", answers: ["membereskan", "mengotori", "membuang", "menaruh"], correct: "membereskan" },
-    { kanji: "[お]皿", kana: "[お]さら", answers: ["piring", "mangkuk", "gelas", "piringan"], correct: "piring" },
-    { kanji: "[お]茶わん", kana: "[お]ちゃわん", answers: ["mangkuk", "piring", "gelas", "sendok"], correct: "mangkuk" },
+    { kanji: "皿", kana: "[お]さら", answers: ["piring", "mangkuk", "gelas", "piringan"], correct: "piring" },
+    { kanji: "茶わん", kana: "[お]ちゃわん", answers: ["mangkuk", "piring", "gelas", "sendok"], correct: "mangkuk" },
     { kanji: "", kana: "コップ", answers: ["gelas", "piring", "botol", "mangkuk"], correct: "gelas" },
     { kanji: "", kana: "ガラス", answers: ["kaca", "plastik", "kayu", "besi"], correct: "kaca" },
     { kanji: "袋", kana: "ふくろ", answers: ["kantong", "tas", "dompet", "amplop"], correct: "kantong" },
@@ -1193,14 +1193,14 @@ const babData = {
     { kanji: "源氏物語", kana: "げんじものがたり", answers: ["Genji Monogatari (Novel)", "Sejarah Jepang", "Nama tempat", "Nama orang"], correct: "Genji Monogatari (Novel)" },
     { kanji: "今の 電車", kana: "いまの でんしゃ", answers: ["kereta tadi", "kereta sekarang", "kereta depan", "kereta cepat"], correct: "kereta tadi" },
     { kanji: "忘れ物", kana: "わすれもの", answers: ["barang yang tertinggal", "barang baru", "hadiah", "oleh-oleh"], correct: "barang yang tertinggal" },
-    { kanji: "このくらい", kana: "このくらい", answers: ["segini", "sebanyak itu", "sedikit", "semuanya"], correct: "segini" },
+    { kanji: "", kana: "このくらい", answers: ["segini", "sebanyak itu", "sedikit", "semuanya"], correct: "segini" },
     { kanji: "～側", kana: "～がわ", answers: ["sebelah ~", "depan ~", "belakang ~", "dalam ~"], correct: "sebelah ~" },
     { kanji: "ポケット", kana: "ぽけっと", answers: ["kantong", "tas", "baju", "celana"], correct: "kantong" },
     { kanji: "～辺", kana: "～へん", answers: ["sekitar ~", "dekat ~", "jauh ~", "dalam ~"], correct: "sekitar ~" },
     { kanji: "", kana: "覚えて いません", answers: ["Tidak ingat", "Tidak tahu", "Tidak mau", "Tidak bisa"], correct: "Tidak ingat" },
     { kanji: "網棚", kana: "あみだな", answers: ["rak bagasi", "kursi", "pintu", "jendela"], correct: "rak bagasi" },
     { kanji: "確か", kana: "たしか", answers: ["kalau tidak salah", "pasti", "mungkin", "tentu"], correct: "kalau tidak salah" },
-    { kanji: "[ああ、]よかった", kana: "[ああ、]よかった", answers: ["[O,] syukur", "Bagus", "Hebat", "Cantik"], correct: "[O,] syukur" },
+    { kanji: "", kana: "[ああ、]よかった", answers: ["[O,] syukur", "Bagus", "Hebat", "Cantik"], correct: "[O,] syukur" },
     { kanji: "新宿", kana: "しんじゅく", answers: ["stasiun di Tokyo/nama daerah", "stasiun di Osaka", "nama gunung", "nama sungai"], correct: "stasiun di Tokyo/nama daerah" },
     { kanji: "地震", kana: "じしん", answers: ["gempa bumi", "tsunami", "banjir", "topan"], correct: "gempa bumi" },
     { kanji: "壁", kana: "かべ", answers: ["dinding", "pintu", "atap", "lantai"], correct: "dinding" },
@@ -1750,4 +1750,5 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
 
