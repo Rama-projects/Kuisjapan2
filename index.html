@@ -58,7 +58,7 @@
     <button class="mainBtn" onclick="showMinnaMenu()">MINNA NO NIHONGO</button>
     <button class="mainBtn iroBtn" onclick="showIrodoriMenu()">IRODORI</button>
     <div style="margin-top: 40px; text-align: center; border-top: 1px solid #222; width: 100%; padding-top: 20px;">
-        <p style="font-size: 12px; color: #555;">Copyright © 2026<br>Pengembang Cahya Ramadhan<br>夢の道クラス</p>
+        <p style="font-size: 12px; color: #555;">Copyright © 2026<br>Pengembang Cahya Ramadhan</p>
     </div>
   </div>
 
@@ -197,10 +197,7 @@
     if (isMuted) return;
     const q = currentQuestions[currentIndex];
     if (!q) return;
-    
-    // Suara tetap selalu bahasa Jepang (diambil dari kana/kanji)
     let textToSpeak = q.kana || q.kanji;
-    
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
     utterance.lang = 'ja-JP';
@@ -228,28 +225,39 @@
     document.getElementById('wrongMsg').style.display = "none";
     optBox.innerHTML = '';
 
-    let choices = [];
     if (quizMode === 'jp-id') {
-        speaker.style.display = 'block'; // Tampilkan speaker di mode JP-ID
-        document.getElementById('kanji').innerText = q.kanji || "";
-        document.getElementById('kana').innerText = q.kana || "";
+        speaker.style.display = 'block';
+        if (q.kanji && q.kanji.trim() !== "") {
+            document.getElementById('kana').innerText = q.kanji;
+            document.getElementById('kanji').innerText = "";
+        } else {
+            document.getElementById('kana').innerText = q.kana;
+            document.getElementById('kanji').innerText = "";
+        }
         currentAnswer = q.correct;
-        choices = [...q.answers];
+        let choices = [...q.answers];
+        setupLayout(choices);
         setTimeout(playAudio, 300);
     } else {
-        speaker.style.display = 'none'; // Sembunyikan speaker di mode ID-JP
+        speaker.style.display = 'none';
         document.getElementById('kanji').innerText = ""; 
         document.getElementById('kana').innerText = q.correct; 
         currentAnswer = q.kana;
-        choices.push(q.kana);
+        let choices = [q.kana];
         let others = selectedData.filter(item => item.kana !== q.kana).sort(()=>Math.random()-0.5).slice(0,3);
         others.forEach(o => choices.push(o.kana));
+        setupLayout(choices);
     }
+    document.getElementById('flowerCount').innerText = combo;
+  }
 
+  function setupLayout(choices) {
     const isTyping = Math.random() > 0.5;
+    const optBox = document.getElementById('options');
+    const inputCont = document.getElementById('inputContainer');
     if(isTyping) {
         inputCont.style.display = 'flex';
-        inputField.focus();
+        document.getElementById('userAnswer').focus();
     } else {
         optBox.style.display = 'flex';
         [...choices].sort(()=>Math.random()-0.5).forEach(txt => {
@@ -259,7 +267,6 @@
             optBox.appendChild(b);
         });
     }
-    document.getElementById('flowerCount').innerText = combo;
   }
 
   function checkInputAnswer() {
@@ -288,7 +295,10 @@
     if(isCorrect) {
         if(btn) btn.classList.add('correct');
         correctCount++; combo++;
-        playAudio(); // Suara bunyi setelah jawaban benar
+        // LOGIKA BARU: Bunyi hanya jika mode Indo-Jepang (karena di JP-ID sudah bunyi di awal)
+        if(quizMode === 'id-jp') {
+            playAudio();
+        }
     } else {
         if(btn) btn.classList.add('wrong');
         wrongList.push(q); combo = 0;
