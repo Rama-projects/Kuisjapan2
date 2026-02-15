@@ -266,17 +266,14 @@
         [...choices].sort(()=>Math.random()-0.5).forEach(txt => {
             let b = document.createElement('button');
             b.className = 'optBtn'; b.innerText = txt;
-            b.onclick = () => {
-                // Untuk tombol pilihan ganda, kita pakai koreksi eksak atau fleksibel
-                // Di sini kita izinkan fleksibel juga agar konsisten
-                processAnswer(checkLogic(txt, currentAnswer), b);
-            };
+            // Pilihan ganda tetap pakai pencocokan eksak agar tidak error
+            b.onclick = () => processAnswer(txt === currentAnswer, b);
             optBox.appendChild(b);
         });
     }
   }
 
-  // --- LOGIKA KOREKSI PINTAR ---
+  // --- LOGIKA KOREKSI PINTAR (HANYA UNTUK KETIKAN) ---
   function cleanText(text) {
     if (!text) return "";
     return text
@@ -287,27 +284,25 @@
       .trim();
   }
 
-  function checkLogic(input, target) {
+  function checkInputAnswer() {
     const q = currentQuestions[currentIndex];
-    const cleanUser = cleanText(input);
+    const userVal = document.getElementById('userAnswer').value.trim();
+    const msg = document.getElementById('wrongMsg');
+    const inputField = document.getElementById('userAnswer');
+    
+    let isCorrect = false;
+    const cleanUser = cleanText(userVal);
 
     if (quizMode === 'jp-id') {
       // Pecah jawaban berdasarkan koma atau kata "atau"
       let targetOptions = q.correct.split(/,| atau /);
-      return targetOptions.some(opt => cleanText(opt) === cleanUser);
+      isCorrect = targetOptions.some(opt => cleanText(opt) === cleanUser);
     } else {
       // Mode ID-JP: Bisa isi Kanji atau Kana
-      return (cleanUser === cleanText(q.kanji) || cleanUser === cleanText(q.kana));
+      isCorrect = (cleanUser === cleanText(q.kanji) || cleanUser === cleanText(q.kana));
     }
-  }
 
-  function checkInputAnswer() {
-    const q = currentQuestions[currentIndex];
-    const userVal = document.getElementById('userAnswer').value;
-    const msg = document.getElementById('wrongMsg');
-    const inputField = document.getElementById('userAnswer');
-    
-    if(checkLogic(userVal, currentAnswer)) {
+    if(isCorrect) {
         inputField.style.borderColor = "#4caf50";
         processAnswer(true);
     } else {
@@ -329,7 +324,7 @@
         wrongList.push(q); combo = 0;
         if(btn) {
             Array.from(document.getElementById('options').children).forEach(b => {
-                if(checkLogic(b.innerText, currentAnswer)) b.classList.add('correct');
+                if(b.innerText === currentAnswer) b.classList.add('correct');
             });
         }
     }
