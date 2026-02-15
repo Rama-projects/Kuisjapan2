@@ -1284,7 +1284,7 @@ const babData = {
   { kanji: "動物園", kana: "どうぶつえん", answers: ["Program S2, S3", "kebun binatang", "pemandian air panas", "pulang"], correct: "kebun binatang" },
   { kanji: "温泉", kana: "おんせん", answers: ["kebun binatang", "pemandian air panas", "pulang", "anak"], correct: "pemandian air panas" },
   { kanji: "帰り", kana: "かえり", answers: ["pemandian air panas", "pulang", "anak", "nomor satu"], correct: "pulang" },
-  { kanji: "お子さん", kana: "おこさん", answers: ["pulang", "anak (orang lain)", "nomor satu", "keadaan"], correct: "anak (orang lain)" },
+  { kanji: "お子さん", kana: "おこさん", answers: ["pulang", "anak orang lain", "nomor satu", "keadaan"], correct: "anak orang lain" },
   { kanji: "―号", kana: "ごう", answers: ["anak", "nomor", "keadaan", "terus"], correct: "nomor" },
   { kanji: "～の方", kana: "～のほう", answers: ["nomor", "sebelah ～", "keadaan", "terus"], correct: "sebelah ～" },
   { kanji: "", kana: "ずっと", answers: ["arah", "seterusnya", "keadaan", "desa"], correct: "seterusnya" },
@@ -1750,6 +1750,7 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
 
 
 
