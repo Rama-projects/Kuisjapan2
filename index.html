@@ -137,7 +137,10 @@
 
   function hideAll() {
     ['mainMenu','minnaMenu','irodoriMenu','dynamicMenu','modeMenu','wordBox','options','comboSection','resultPage','inputContainer']
-    .forEach(id => { document.getElementById(id).style.display = 'none'; });
+    .forEach(id => { 
+        const el = document.getElementById(id);
+        if(el) el.style.display = 'none'; 
+    });
   }
 
   function toggleMute() {
@@ -213,7 +216,6 @@
     const q = currentQuestions[currentIndex];
     const optBox = document.getElementById('options');
     const inputCont = document.getElementById('inputContainer');
-    const inputField = document.getElementById('userAnswer');
     const speaker = document.getElementById('mainSpeaker');
     
     document.getElementById('wordBox').style.display = 'flex';
@@ -221,7 +223,8 @@
     document.getElementById('quizInfo').innerText = currentLabel + (quizMode === 'jp-id' ? " (JP-ID)" : " (ID-JP)");
     document.getElementById('instruksi').innerText = q.instruksi || "Pilih/Ketik jawaban yang benar";
     
-    inputField.value = ""; inputField.style.borderColor = "#333";
+    document.getElementById('userAnswer').value = ""; 
+    document.getElementById('userAnswer').style.borderColor = "#333";
     document.getElementById('wrongMsg').style.display = "none";
     optBox.innerHTML = '';
 
@@ -263,23 +266,48 @@
         [...choices].sort(()=>Math.random()-0.5).forEach(txt => {
             let b = document.createElement('button');
             b.className = 'optBtn'; b.innerText = txt;
-            b.onclick = () => processAnswer(txt === currentAnswer, b);
+            b.onclick = () => {
+                // Untuk tombol pilihan ganda, kita pakai koreksi eksak atau fleksibel
+                // Di sini kita izinkan fleksibel juga agar konsisten
+                processAnswer(checkLogic(txt, currentAnswer), b);
+            };
             optBox.appendChild(b);
         });
     }
   }
 
+  // --- LOGIKA KOREKSI PINTAR ---
+  function cleanText(text) {
+    if (!text) return "";
+    return text
+      .replace(/\(.*\)/g, "")      // Hapus teks dalam kurung (...)
+      .replace(/\[.*\]/g, "")      // Hapus teks dalam kurung siku [...]
+      .replace(/[~～ー\-\s]/g, "") // Hapus simbol ~, strip, dan SEMUA spasi
+      .toLowerCase()
+      .trim();
+  }
+
+  function checkLogic(input, target) {
+    const q = currentQuestions[currentIndex];
+    const cleanUser = cleanText(input);
+
+    if (quizMode === 'jp-id') {
+      // Pecah jawaban berdasarkan koma atau kata "atau"
+      let targetOptions = q.correct.split(/,| atau /);
+      return targetOptions.some(opt => cleanText(opt) === cleanUser);
+    } else {
+      // Mode ID-JP: Bisa isi Kanji atau Kana
+      return (cleanUser === cleanText(q.kanji) || cleanUser === cleanText(q.kana));
+    }
+  }
+
   function checkInputAnswer() {
     const q = currentQuestions[currentIndex];
-    const userVal = document.getElementById('userAnswer').value.trim();
+    const userVal = document.getElementById('userAnswer').value;
     const msg = document.getElementById('wrongMsg');
     const inputField = document.getElementById('userAnswer');
     
-    let isCorrect = (quizMode === 'jp-id') ? 
-        (userVal.toLowerCase() === q.correct.toLowerCase()) : 
-        (userVal === q.kanji || userVal === q.kana);
-
-    if(isCorrect) {
+    if(checkLogic(userVal, currentAnswer)) {
         inputField.style.borderColor = "#4caf50";
         processAnswer(true);
     } else {
@@ -295,16 +323,13 @@
     if(isCorrect) {
         if(btn) btn.classList.add('correct');
         correctCount++; combo++;
-        // LOGIKA BARU: Bunyi hanya jika mode Indo-Jepang (karena di JP-ID sudah bunyi di awal)
-        if(quizMode === 'id-jp') {
-            playAudio();
-        }
+        if(quizMode === 'id-jp') playAudio();
     } else {
         if(btn) btn.classList.add('wrong');
         wrongList.push(q); combo = 0;
         if(btn) {
             Array.from(document.getElementById('options').children).forEach(b => {
-                if(b.innerText === currentAnswer) b.classList.add('correct');
+                if(checkLogic(b.innerText, currentAnswer)) b.classList.add('correct');
             });
         }
     }
