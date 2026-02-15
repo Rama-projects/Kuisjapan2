@@ -1294,7 +1294,7 @@ const babData = {
   { kanji: "村", kana: "むら", answers: ["bulan", "desa", "pemandangan", "pintu masuk"], correct: "desa" },
   { kanji: "卒業します", kana: "そつぎょうします", answers: ["desa", "lulus", "pemandangan", "tutup"], correct: "lulus" },
   { kanji: "映画館", kana: "えいがかん", answers: ["pemandangan", "bioskop", "langit", "tutup"], correct: "bioskop" },
-  { kanji: "嫌[な]", kana: "いや", answers: ["bioskop", "tidak suka", "langit", "tutup"], correct: "tidak suka" },
+  { kanji: "嫌[な]", kana: "いや", answers: ["bioskop", "tidak suka, tidak senang", "langit", "tutup"], correct: "tidak suka, tidak senang" },
   { kanji: "空", kana: "そら", answers: ["tidak suka", "langit", "tutup", "dunia"], correct: "langit" },
   { kanji: "閉じます", kana: "とじます", answers: ["langit", "tutup", "dunia", "bebas"], correct: "tutup" },
   { kanji: "都会", kana: "とかい", answers: ["tutup", "kota besar", "dunia", "bebas"], correct: "kota besar" },
@@ -1750,5 +1750,6 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
 
 
