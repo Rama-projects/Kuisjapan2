@@ -1349,7 +1349,7 @@ const babData = {
   { kanji: "", kana: "それはいけませんね。", answers: ["stres", "Kurang bagus.", "horoskop", "Taurus"], correct: "Kurang bagus." },
   { kanji: "星占い", kana: "ほしうらな", answers: ["kurang bagus", "horoskop", "Taurus", "bingung"], correct: "horoskop" },
   { kanji: "牡牛座", kana: "おうしざ", answers: ["horoskop", "Taurus", "bingung", "lotre"], correct: "Taurus" },
-  { kanji: "働きすぎ", kana: "はたらすぎ", answers: ["Taurus", "terlalu banyak pekerjaan", "bingung", "lotre"], correct: "terlalu banyak pekerjaan" },
+  { kanji: "働きすぎ", kana: "はたらきすぎ", answers: ["Taurus", "terlalu banyak pekerjaan", "bingung", "lotre"], correct: "terlalu banyak pekerjaan" },
   { kanji: "困ります", kana: "こまります", answers: ["pekerjaan", "bingung", "lotre", "kesehatan"], correct: "bingung" },
   { kanji: "宝くじ", kana: "たからくじ", answers: ["bingung", "lotre", "kesehatan", "asmara"], correct: "lotre" },
   { kanji: "当たります [宝くじが~]", kana: "あたります", answers: ["lotre", "memenangi [lotre]", "kesehatan", "asmara"], correct: "memenangi [lotre]" },
@@ -1750,6 +1750,7 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
 
 
 
