@@ -1314,7 +1314,7 @@ const babData = {
   { kanji: "冷やします", kana: "ひやします", answers: ["masuk angin", "mendinginkan", "macet", "sepi"], correct: "mendinginkan" },
   { kanji: "込みます [道が~]", kana: "こみます", answers: ["mendinginkan", "[jalan] macet", "sepi", "keluar"], correct: "[jalan] macet" },
   { kanji: "すきます [道が~]", kana: "すきます", answers: ["macet", "[jalan] sepi", "keluar", "menghadiri"], correct: "[jalan] sepi" },
-  { kanji: "出ます [試合に~/パーティーに~]", kana: "でます", answers: ["sepi", "ikut [pertandingan]/menghadiri [pesta]", "memaksakan diri", "cukup"], correct: "ikut [pertandingan]/menghadiri [pesta]" },
+  { kanji: "出ます [試合に~/パーティーに~]", kana: "でます", answers: ["sepi", "ikut,menghadiri", "memaksakan diri", "cukup"], correct: "ikut,menghadiri" },
   { kanji: "無理をします", kana: "むりをします", answers: ["ikut pertandingan", "memaksakan diri", "cukup", "aneh"], correct: "memaksakan diri" },
   { kanji: "十分 [な]", kana: "じゅうぶん", answers: ["memaksakan diri", "cukup", "aneh", "bising"], correct: "cukup" },
   { kanji: "おかしい", kana: "おかしい", answers: ["cukup", "aneh, menarik", "bising", "dokter"], correct: "aneh, menarik" },
@@ -1345,8 +1345,8 @@ const babData = {
   { kanji: "", kana: "あんなに", answers: ["begini", "begitu (lawan bicara)", "begitu (jauh)", "Eropa"], correct: "begitu (jauh)" },
   { kanji: "元気", kana: "げんき", answers: ["sehat", "lambung", "stres", "kurang bagus"], correct: "sehat" },
   { kanji: "胃", kana: "い", answers: ["sehat", "lambung", "stres", "kurang bagus"], correct: "lambung" },
-  { kanji: "ストレス", kana: "すとれす", answers: ["lambung", "stres", "kurang bagus", "horoskop"], correct: "stres" },
-  { kanji: "それはいけませんね。", kana: "それはいけませんね。", answers: ["stres", "Kurang bagus.", "horoskop", "Taurus"], correct: "Kurang bagus." },
+  { kanji: "ストレス", kana: "ストレス", answers: ["lambung", "stres", "kurang bagus", "horoskop"], correct: "stres" },
+  { kanji: "", kana: "それはいけませんね。", answers: ["stres", "Kurang bagus.", "horoskop", "Taurus"], correct: "Kurang bagus." },
   { kanji: "星占い", kana: "ほしうらな", answers: ["kurang bagus", "horoskop", "Taurus", "bingung"], correct: "horoskop" },
   { kanji: "牡牛座", kana: "おうしざ", answers: ["horoskop", "Taurus", "bingung", "lotre"], correct: "Taurus" },
   { kanji: "働きすぎ", kana: "はたらすぎ", answers: ["Taurus", "terlalu banyak pekerjaan", "bingung", "lotre"], correct: "terlalu banyak pekerjaan" },
@@ -1750,6 +1750,7 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
 
 
 
