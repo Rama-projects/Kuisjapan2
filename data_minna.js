@@ -1400,7 +1400,7 @@ const babData = {
   { kanji: "あと~", kana: "あと", answers: ["lagi", "sisa~", "kira-kira", "pelanggaran"], correct: "sisa~" },
   { kanji: "~ほど", kana: "ほど", answers: ["sisa", "kira-kira ~", "pelanggaran", "denda"], correct: "kira-kira ~" },
   { kanji: "駐車違反", kana: "ちゅうしゃいはん", answers: ["kira-kira", "pelanggaran lalu lintas", "denda", "gempa bumi"], correct: "pelanggaran lalu lintas" },
-  { kanji: "罰金", kana: "ぱっきん", answers: ["pelanggaran", "denda", "gempa bumi", "terjadi"], correct: "denda" },
+  { kanji: "罰金", kana: "ばっきん", answers: ["pelanggaran", "denda", "gempa bumi", "terjadi"], correct: "denda" },
   { kanji: "地震", kana: "じしん", answers: ["denda", "gempa bumi", "terjadi", "bantu-membantu"], correct: "gempa bumi" },
   { kanji: "起きます", kana: "おきます", answers: ["gempa bumi", "terjadi", "bantu-membantu", "memang"], correct: "terjadi" },
   { kanji: "助け合います", kana: "たすけあいます", answers: ["terjadi", "bantu-membantu", "memang", "sedih"], correct: "bantu-membantu" },
@@ -1750,6 +1750,7 @@ const babData = {
   { kanji: "今でも", kana: "いまでも", answers: ["sampai sekarang", "dulu", "nanti", "besok"], correct: "sampai sekarang" }
 ]
 };
+
 
 
 
