@@ -1382,7 +1382,7 @@ const babData = {
   { kanji: "締め切り", kana: "しめきり", answers: ["bola", "batas waktu", "peraturan", "bahaya"], correct: "batas waktu" },
   { kanji: "規則", kana: "きそく", answers: ["batas waktu", "peraturan", "bahaya", "dilarang pakai"], correct: "peraturan" },
   { kanji: "危険", kana: "きけん", answers: ["peraturan", "bahaya", "dilarang pakai", "dilarang masuk"], correct: "bahaya" },
-  { "className": "使用禁止", kana: "しようきんし", answers: ["bahaya", "dilarang pakai", "dilarang masuk", "perlahan-lahan"], correct: "dilarang pakai" },
+  { kanji: "使用禁止", kana: "しようきんし", answers: ["bahaya", "dilarang pakai", "dilarang masuk", "perlahan-lahan"], correct: "dilarang pakai" },
   { kanji: "立入禁止", kana: "たちいりきんし", answers: ["dilarang pakai", "dilarang masuk", "perlahan-lahan", "pintu masuk"], correct: "dilarang masuk" },
   { kanji: "徐行", kana: "じょこう", answers: ["dilarang masuk", "berjalan perlahan-lahan", "pintu masuk", "pintu keluar"], correct: "berjalan perlahan-lahan" },
   { kanji: "入口", kana: "いりぐち", answers: ["perlahan-lahan", "pintu masuk", "pintu keluar", "pintu darurat"], correct: "pintu masuk" },
@@ -1461,7 +1461,7 @@ const babData = {
   { kanji: "煮ます", kana: "にます", answers: ["merebus", "menggoreng", "memanggang", "mengukus"], correct: "merebus" },
   { kanji: "煮えます", kana: "にえます", answers: ["telah matang", "sedang mendidih", "masih mentah", "hangat"], correct: "telah matang" },
   { kanji: "どんぶり", kana: "どんぶり", answers: ["mangkuk", "piring besar", "sendok", "sumpit"], correct: "mangkuk" },
-  { kanji: "たちます", kana: "たちます", answers: ["lewat/berlalu", "datang/tiba", "pergi/keluar", "kembali/pulang"], correct: "lewat/berlalu" }
+  { kanji: "たちます", kana: "たちます", answers: ["lewat,berlalu", "datang,tiba", "pergi,keluar", "kembali,pulang"], correct: "lewat,berlalu" }
 ],
 35: [
   { kanji: "咲きます", kana: "さきます", answers: ["[bunga] mekar", "berubah", "bingung", "sembuh"], correct: "[bunga] mekar" },
@@ -2149,6 +2149,7 @@ const babData = {
   { kanji: "ミュンヘン", kana: "ミュンヘン", answers: ["München (Jerman)", "Paris (Prancis)", "London (Inggris)", "Roma (Italia)"], correct: "München (Jerman)" }
 ]
 };
+
 
 
 
