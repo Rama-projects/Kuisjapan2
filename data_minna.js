@@ -1468,8 +1468,8 @@ const babData = {
   { kanji: "変わります", kana: "かわります", answers: ["[warna] berubah", "mekar", "membaik", "mengisi"], correct: "[warna] berubah" },
   { kanji: "困ります", kana: "こまります", answers: ["bingung", "marah", "sedih", "lelah"], correct: "bingung" },
   { kanji: "付けます", kana: "つけます", answers: ["memberikan [tanda (benar)]", "menghapus", "menulis", "membaca"], correct: "memberikan [tanda (benar)]" },
-  { kanji: "治ります", kana: "なおります", answers: ["[penyakit] sembuh", "rusak", "pecah", "jatuh"], correct: "[penyakit] sembuh" },
-  { kanji: "直ります", kana: "なおります", answers: ["[kerusakan] membaik", "macet", "hilang", "kotor"], correct: "[kerusakan] membaik" },
+  { kanji: "病気が治ります", kana: "びょうきがなおります", answers: ["penyakit sembuh", "rusak membaik", "pecah diperbaiki", "jatuh sembuh"], correct: "penyakit sembuh" },
+  { kanji: "故障が直ります", kana: "こしょうがなおります", answers: ["kerusakan membaik", "penyakit sembuh", "hilang ditemukan", "pecah di perbaiki"], correct: "kerusakan membaik" },
   { kanji: "", kana: "クリックします", answers: ["klik", "ketik", "hapus", "geser"], correct: "klik" },
   { kanji: "入力します", kana: "にゅうりょくします", answers: ["mengisi", "klik", "menghapus", "melihat"], correct: "mengisi" },
   { kanji: "正しい", kana: "ただしい", answers: ["benar", "salah", "buruk", "kuat"], correct: "benar" },
@@ -2149,6 +2149,7 @@ const babData = {
   { kanji: "ミュンヘン", kana: "ミュンヘン", answers: ["München (Jerman)", "Paris (Prancis)", "London (Inggris)", "Roma (Italia)"], correct: "München (Jerman)" }
 ]
 };
+
 
 
 
