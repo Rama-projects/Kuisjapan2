@@ -1535,7 +1535,7 @@ const babData = {
   { kanji: "", kana: "していらっしゃいます", answers: ["melakukan (Hormat)", "pergi", "datang", "makan"], correct: "melakukan (Hormat)" },
   { kanji: "水泳", kana: "すいえい", answers: ["renang", "lari", "lompat", "selancar"], correct: "renang" },
   { kanji: "違います", kana: "ちがいます", answers: ["salah,tidak benar", "benar", "mirip", "sama"], correct: "salah,tidak benar" },
-  { kanji: "使っていらっしゃるんですね", kana: "つかっていらっしゃるんですね", answers: ["Menggunakan", "Melihat ya", "Membeli ya", "Memberi ya"], correct: "Menggunakan" },
+  { kanji: "使っていらっしゃるんですね", kana: "つかっていらっしゃるんですね", answers: ["Menggunakan ya", "Melihat ya", "Membeli ya", "Memberi ya"], correct: "Menggunakan ya" },
   { kanji: "チャレンジします", kana: "チャレンジします", answers: ["menantang", "berhenti", "beristirahat", "belajar"], correct: "menantang" },
   { kanji: "気持ち", kana: "きもち", answers: ["sikap,perasaan", "suara", "bentuk", "warna"], correct: "sikap,perasaan" },
   { kanji: "乗り物", kana: "のりもの", answers: ["kendaraan", "makanan", "minuman", "pakaian"], correct: "kendaraan" },
@@ -2149,6 +2149,7 @@ const babData = {
   { kanji: "ミュンヘン", kana: "ミュンヘン", answers: ["München (Jerman)", "Paris (Prancis)", "London (Inggris)", "Roma (Italia)"], correct: "München (Jerman)" }
 ]
 };
+
 
 
 
