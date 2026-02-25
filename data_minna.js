@@ -1516,9 +1516,9 @@ const babData = {
   { kanji: "腐ります", kana: "くさります", answers: ["[makanan] busuk", "tertimpa", "lewat", "jatuh"], correct: "[makanan] busuk" },
   { kanji: "剣道", kana: "けんどう", answers: ["kendo", "judo", "karate", "sumo"], correct: "kendo" },
   { kanji: "柔道", kana: "じゅうどう", answers: ["judo", "kendo", "musik", "angkasa"], correct: "judo" },
-  { kanji: "", kana: "ラッシュ", answers: ["keramaian/kesibukan", "angkasa", "musik", "sejarah"], correct: "keramaian/kesibukan" },
+  { kanji: "", kana: "ラッシュ", answers: ["keramaian/kesibukan", "angkasa", "musik", "sejarah"], correct: "keramaian,kesibukan" },
   { kanji: "宇宙", kana: "うちゅう", answers: ["angkasa", "bumi", "laut", "gunung"], correct: "angkasa" },
-  { kanji: "曲", kana: "きょく", answers: ["musik/lagu", "tarian", "gambar", "cerita"], correct: "musik/lagu" },
+  { kanji: "曲", kana: "きょく", answers: ["musik/lagu", "tarian", "gambar", "cerita"], correct: "musik,lagu" },
   { kanji: "毎週", kana: "まいしゅう", answers: ["setiap minggu", "setiap bulan", "setiap tahun", "setiap hari"], correct: "setiap minggu" },
   { kanji: "毎月", kana: "まいつき", answers: ["setiap bulan", "setiap minggu", "setiap tahun", "setiap jam"], correct: "setiap bulan" },
   { kanji: "毎年", kana: "まいとし/まいねん", answers: ["setiap tahun", "setiap bulan", "setiap minggu", "setiap dekade"], correct: "setiap tahun" },
@@ -1531,20 +1531,20 @@ const babData = {
   { kanji: "できるだけ", kana: "できるだけ", answers: ["sedapat mungkin", "sebagian besar", "secepatnya", "seperlunya"], correct: "sedapat mungkin" },
   { kanji: "ほとんど", kana: "ほとんど", answers: ["sebagian besar", "seluruhnya", "sedikit", "tidak ada"], correct: "sebagian besar" },
   { kanji: "お客様", kana: "おきゃくさま", answers: ["tamu (Hormat)", "pelayan", "pemilik", "guru"], correct: "tamu (Hormat)" },
-  { kanji: "特別[な]", kana: "とくべつ[な]", answers: ["khusus/spesial", "biasa", "perlu", "bebas"], correct: "khusus/spesial" },
+  { kanji: "特別[な]", kana: "とくべつ[な]", answers: ["khusus/spesial", "biasa", "perlu", "bebas"], correct: "khusus,spesial" },
   { kanji: "", kana: "していらっしゃいます", answers: ["melakukan (Hormat)", "pergi", "datang", "makan"], correct: "melakukan (Hormat)" },
   { kanji: "水泳", kana: "すいえい", answers: ["renang", "lari", "lompat", "selancar"], correct: "renang" },
-  { kanji: "違います", kana: "ちがいます", answers: ["salah/tidak benar", "benar", "mirip", "sama"], correct: "salah/tidak benar" },
-  { kanji: "使っていらっしゃるんですね", kana: "つかっていらっしゃるんですね", answers: ["Menggunakan ya (Hormat)", "Melihat ya", "Membeli ya", "Memberi ya"], correct: "Menggunakan ya (Hormat)" },
+  { kanji: "違います", kana: "ちがいます", answers: ["salah/tidak benar", "benar", "mirip", "sama"], correct: "salah,tidak benar" },
+  { kanji: "使っていらっしゃるんですね", kana: "つかっていらっしゃるんですね", answers: ["Menggunakan", "Melihat ya", "Membeli ya", "Memberi ya"], correct: "Menggunakan" },
   { kanji: "チャレンジします", kana: "チャレンジします", answers: ["menantang", "berhenti", "beristirahat", "belajar"], correct: "menantang" },
-  { kanji: "気持ち", kana: "きもち", answers: ["sikap/perasaan", "suara", "bentuk", "warna"], correct: "sikap/perasaan" },
+  { kanji: "気持ち", kana: "きもち", answers: ["sikap/perasaan", "suara", "bentuk", "warna"], correct: "sikap,perasaan" },
   { kanji: "乗り物", kana: "のりもの", answers: ["kendaraan", "makanan", "minuman", "pakaian"], correct: "kendaraan" },
   { kanji: "―世紀", kana: "―せいき", answers: ["abad ke -", "tahun ke -", "bulan ke -", "minggu ke -"], correct: "abad ke -" },
   { kanji: "遠く", kana: "とおく", answers: ["jauh", "dekat", "samping", "belakang"], correct: "jauh" },
   { kanji: "珍しい", kana: "めずらしい", answers: ["langka", "umum", "mahal", "murah"], correct: "langka" },
   { kanji: "汽車", kana: "きしゃ", answers: ["kereta api", "bus", "pesawat", "kapal"], correct: "kereta api" },
   { kanji: "汽船", kana: "きせん", answers: ["kapal api", "kapal selam", "perahu", "rakit"], correct: "kapal api" },
-  { kanji: "大勢の～", kana: "おおぜいの～", answers: ["banyak (orang)", "sedikit", "beberapa", "semua"], correct: "banyak (orang)" },
+  { kanji: "大勢の～", kana: "おおぜいの～", answers: ["banyak", "sedikit", "beberapa", "semua"], correct: "banyak" },
   { kanji: "運びます", kana: "はこびます", answers: ["mengangkut", "menggunakan", "membuang", "menaruh"], correct: "mengangkut" },
   { kanji: "利用します", kana: "りようします", answers: ["menggunakan", "memperbaiki", "menjual", "membeli"], correct: "menggunakan" },
   { kanji: "自由に", kana: "じゆうに", answers: ["dengan bebas", "dengan sulit", "dengan cepat", "dengan malas"], correct: "dengan bebas" }
@@ -2149,6 +2149,7 @@ const babData = {
   { kanji: "ミュンヘン", kana: "ミュンヘン", answers: ["München (Jerman)", "Paris (Prancis)", "London (Inggris)", "Roma (Italia)"], correct: "München (Jerman)" }
 ]
 };
+
 
 
 
